@@ -8,9 +8,14 @@ in
 	home.homeDirectory = "/home/selrak";
 	programs.git = { 
     enable = true;
-    userName = "Selrrak";
-    userEmail = "chbou602@ulaval.ca";
+    settings = {
+      user = {
+      name = "Selrrak";
+      email = "chbou602@ulaval.ca";
+      };
+    };
   };
+
 
 	home.stateVersion = "26.05";
 	programs.bash = {
