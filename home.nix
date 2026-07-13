@@ -24,44 +24,45 @@ in
       f = "nvim .";
       config = "cd ~/nixos-dotfiles/";
       freeze = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos";
+      hypr = "start-hyprland";
 		};
     initExtra = ''
     export PATH="$HOME/.local/bin:$PATH"
     nitch
     '';
 	};
-    
-  xdg.configFile."river/init" = {
-    source = ./config/river/init;
-    executable = true;
-  };
-
-  xdg.configFile."kwm" = {
-    source = create_symlink "${dotfiles}/kwm/";
-    recursive = true;
-  };
 
   xdg.configFile."nvim" = {
     source = create_symlink "${dotfiles}/nvim/";
     recursive = true;
   };
-
-  xdg.configFile."foot" = {
-    source = create_symlink "${dotfiles}/foot/";
+  xdg.configFile."kitty" = {
+    source = create_symlink "${dotfiles}/kitty/";
     recursive = true;
   };
-
+  xdg.configFile."waybar" = {
+    source = create_symlink "${dotfiles}/waybar/";
+    recursive = true;
+  };
+ xdg.configFile."hypr" = {
+    source = create_symlink "${dotfiles}/hypr/";
+    recursive = true;
+  };
   home.file.".local/bin/screenshot" = {
     source = ./scripts/snip.sh;
     executable = true;
   };
 
 	home.packages = with pkgs; [
-    (pkgs.callPackage ./kwm.nix {})
+    ranger
+    bluetui
+    calcurse
+    btop
+    hyprpaper
     nitch
+    impala
 		neovim
 		ripgrep
-    river
 		nil
 		nixpkgs-fmt
 		nodejs
@@ -69,6 +70,8 @@ in
     swaybg
     grim
     slurp
+    virt-manager
+    wiremix
     wmenu
     wl-clipboard
 	];

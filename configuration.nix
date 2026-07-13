@@ -7,7 +7,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -17,8 +17,6 @@
 
 services.getty.autologinUser = "selrak";
 
-
-
 users.users.selrak = {
    isNormalUser = true;
    extraGroups = [ "wheel" ];
@@ -26,15 +24,20 @@ users.users.selrak = {
      tree
    ];
  };
-programs.river.enable = true;
+programs.hyprland = {
+  enable = true;
+  xwayland.enable = true;
+};
 programs.firefox.enable = true;
 
  environment.systemPackages = with pkgs; [
-   vim
-   wget
-   git
-   foot
-   swaybg
+  vim
+  wget
+  git
+  swaybg
+  kitty
+  waybar
+  everforest-cursors 
  ];
 
 programs.mtr.enable = true;
