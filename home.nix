@@ -71,6 +71,7 @@ in
     swaybg
     grim
     slurp
+    vesktop
     virt-manager
     wiremix
     wmenu
