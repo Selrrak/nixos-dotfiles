@@ -32,7 +32,9 @@ in
     nitch
     '';
 	};
-
+  home.sessionVariables = {
+  EDITOR = "nvim";
+  };
   xdg.configFile."nvim" = {
     source = create_symlink "${dotfiles}/nvim/";
     recursive = true;
@@ -49,6 +51,14 @@ in
     source = create_symlink "${dotfiles}/hypr/";
     recursive = true;
   };
+ xdg.configFile."ranger" = {
+    source = create_symlink "${dotfiles}/ranger/";
+    recursive = true;
+ };
+ xdg.configFile."wlogout" = {
+    source = create_symlink "${dotfiles}/wlogout/";
+    recursive = true;
+ };
   home.file.".local/bin/screenshot" = {
     source = ./scripts/snip.sh;
     executable = true;
@@ -60,6 +70,7 @@ in
     calcurse
     btop
     hyprpaper
+    hyprlock
     nitch
     impala
 		neovim
@@ -72,10 +83,10 @@ in
     grim
     slurp
     vesktop
-    virt-manager
     wiremix
     wmenu
     wl-clipboard
+    wlogout
 	];
 }
 

@@ -15,12 +15,24 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-	output = "",
-	mode = "preferred",
-	position = "auto",
+	output = "DP-1",
+	mode = "3840x1600@144",
+	position = "0x0",
 	scale = "1.0",
 })
-
+hl.monitor({
+	output = "DP-2",
+	mode = "3440x1440@143.97",
+	position = "auto-up",
+	scale = "1.0",
+})
+hl.monitor({
+	output = "DP-3",
+	mode = "1920x1080@165",
+	position = "3840x0",
+	scale = "1.0",
+    transform = 1,
+})
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
@@ -187,11 +199,7 @@ hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" 
 -- uncomment all if you wish to use that.
 hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
 hl.workspace_rule({ workspace = "f[1]", gaps_out = 0, gaps_in = 0 })
-hl.workspace_rule({ workspace = "2", layout = "master" })
-hl.workspace_rule({ workspace = "3", layout = "scrolling" })
-hl.workspace_rule({ workspace = "4", layout = "scrolling" })
 hl.workspace_rule({ workspace = "8", layout = "monocle" })
-hl.workspace_rule({ workspace = "10", layout = "scrolling" })
 hl.window_rule({
 	name = "no-gaps-wtv1",
 	match = { float = false, workspace = "w[tv1]" },
@@ -229,11 +237,16 @@ hl.config({
 ----------------
 ----  MISC  ----
 ----------------
+hl.config({
+    cursor = {
+        no_hardware_cursors = true,
+    },
+})
 
 hl.config({
 	misc = {
-		force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
-		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
+		force_default_wallpaper = -1, 		
+        disable_hyprland_logo = true, 
 		disable_splash_rendering = true,
 	},
 })
@@ -426,8 +439,48 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
-local browserWS = "1"
-local terminalWS = "2"
+hl.workspace_rule({
+    workspace = "1",
+    monitor = "DP-1",
+    layout = "master",
+    default = true,
+})
+hl.workspace_rule({
+    workspace = "2",
+    monitor = "DP-2",
+    default = true,
+})
+hl.workspace_rule({
+    workspace = "3",
+    monitor = "DP-1",
+    default = true,
+    layout = "scrolling",
+})
+hl.workspace_rule({
+    workspace = "4",
+    monitor = "DP-1",
+    default = true,
+    layout = "scrolling",
+})
+hl.workspace_rule({
+    workspace = "5",
+    monitor = "DP-3",
+    default = true,
+    layout = "scrolling",
+})
+hl.workspace_rule({
+    workspace = "9",
+    monitor = "DP-2",
+    default = true,
+})
+hl.workspace_rule({
+    workspace = "10",
+    monitor = "DP-2",
+    default = true,
+    layout = "scrolling",
+})
+local browserWS = "2"
+local terminalWS = "1"
 local fileBrowserWS = "3"
 local documentWS = "4"
 local funWS = "5"
