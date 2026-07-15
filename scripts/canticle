@@ -1,0 +1,28 @@
+#!/bin/bash
+
+lang="$1"
+project="$2"
+
+declare -A dirs=(
+	[python]="Python"
+	[cpp]="CPP"
+	)
+	
+declare -A mains=(
+	[python]="main.py"
+	[cpp]="main.cpp"
+	)
+
+if [[ -z "${dirs[$lang]}" ]]; then
+    	echo "Unknown language: $lang"
+    	exit 1
+fi	
+
+root="$HOME/Documents/${dirs[$lang]}/$project"
+main_file=${mains[$lang]}
+
+hyprctl dispatch 'hl.dsp.window.move({ workspace = "1" })'
+kitty --title "DEV_RANGER" --directory "$root" ranger >/dev/null 2>&1 &
+kitty --title "DEV_TMUX" --directory "$root" tmux new-session -A -s "$project" >/dev/null 2>&1 &
+cd "$root" || exit 1
+DEV_CANTICLE=1 exec nvim "$main_file"

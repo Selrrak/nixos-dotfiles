@@ -469,9 +469,27 @@ hl.workspace_rule({
     layout = "scrolling",
 })
 hl.workspace_rule({
-    workspace = "9",
-    monitor = "DP-2",
+    workspace = "6",
+    monitor = "DP-1",
     default = true,
+    layout = "monocle",
+})
+hl.workspace_rule({
+    workspace = "7",
+    monitor = "DP-3",
+    default = true,
+    layout = "dwindle",
+})
+hl.workspace_rule({
+    workspace = "8",
+    monitor = "DP-1",
+    default = true,
+})
+hl.workspace_rule({
+    workspace = "9",
+    monitor = "DP-1",
+    default = true,
+    layout = "master"
 })
 hl.workspace_rule({
     workspace = "10",
@@ -484,6 +502,7 @@ local terminalWS = "1"
 local fileBrowserWS = "3"
 local documentWS = "4"
 local funWS = "5"
+local bigGaming = "6"
 local virtualManagerWS = "9"
 local utilityWS = "10"
 hl.window_rule({
@@ -552,7 +571,20 @@ hl.window_rule({
 	},
 	workspace = funWS,
 })
-
+hl.window_rule({
+	name = "steam",
+	match = {
+		class = "steam",
+	},
+	workspace = funWS,
+})
+hl.window_rule({
+	name = "game",
+	match = {
+		class = "^GAME$",
+	},
+	workspace = bigGaming,
+})
 hl.window_rule({
 	name = "bt-utility",
 	match = {
@@ -593,7 +625,8 @@ hl.window_rule({
 hl.window_rule({
 	name = "virtual1",
 	match = {
-		class = "virt-manager",
+		class = ".virt-manager-wrapped",
 	},
 	workspace = virtualManagerWS,
 })
+

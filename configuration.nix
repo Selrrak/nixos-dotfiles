@@ -29,7 +29,7 @@ services.getty.autologinUser = "selrak";
 
 users.users.selrak = {
    isNormalUser = true;
-   extraGroups = [ "wheel" ];
+   extraGroups = [ "wheel" "video" "render" ];
    packages = with pkgs; [
      tree
    ];
@@ -40,9 +40,17 @@ programs.hyprland = {
 };
 programs.firefox.enable = true;
 
+programs.steam.enable = true;
+programs.steam.remotePlay.openFirewall = true;
+programs.steam.gamescopeSession.enable = true;
+programs.steam.localNetworkGameTransfers.openFirewall = true;
+
 services.xserver.videoDrivers = [ "nvidia" ];
 
-hardware.graphics.enable = true;
+hardware.graphics = {
+  enable = true;
+  enable32Bit = true;
+};
 
 hardware.nvidia = {
   modesetting.enable = true;
@@ -61,6 +69,7 @@ hardware.nvidia = {
   waybar
   everforest-cursors 
   hyprpolkitagent
+  gamescope
  ];
 
 programs.mtr.enable = true;
@@ -88,6 +97,11 @@ services.pipewire = {
 
 services.pulseaudio.enable = false;
 
+fileSystems."/home/selrak/storage" = {
+  device = "/dev/disk/by-label/storage";
+  fsType = "ext4";
+  options = [ "nofail" ];
+};
 
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

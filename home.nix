@@ -63,7 +63,10 @@ in
     source = ./scripts/snip.sh;
     executable = true;
   };
-
+ home.file.".local/bin/canticle" = {
+    source = ./scripts/canticle;
+    executable = true;
+  };
 	home.packages = with pkgs; [
     ranger
     bluetui
@@ -87,6 +90,9 @@ in
     wmenu
     wl-clipboard
     wlogout
+    tmux
+    teams-for-linux
+   #ytmdesktop
 	];
 }
 
