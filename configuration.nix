@@ -38,6 +38,17 @@ programs.hyprland = {
   enable = true;
   xwayland.enable = true;
 };
+
+xdg.portal = {
+  enable = true;
+  xdgOpenUsePortal = true;
+  extraPortals = with pkgs; [
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-wlr
+  ];
+};
+
 programs.firefox.enable = true;
 
 programs.steam.enable = true;
@@ -75,6 +86,8 @@ hardware.nvidia = {
   everforest-cursors 
   hyprpolkitagent
   gamescope
+  appimage-run
+  texliveFull
  ];
 
 programs.mtr.enable = true;
@@ -100,6 +113,7 @@ services.pipewire = {
     alsa.support32Bit = true;
   };
 
+services.dbus.enable = true;
 services.pulseaudio.enable = false;
 
 fileSystems."/home/selrak/storage" = {

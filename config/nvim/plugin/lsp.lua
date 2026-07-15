@@ -266,10 +266,80 @@ vim.lsp.config['templ'] = {
     capabilities = caps,
 }
 
+vim.lsp.config['basedpyright'] = {
+    cmd = { 'basedpyright-langserver', '--stdio' },
+    filetypes = { 'python' },
+    root_markers = {
+        'pyproject.toml',
+        'uv.lock',
+        'poetry.lock',
+        'requirements.txt',
+        '.git',
+    },
+    capabilities = caps,
+    settings = {
+        basedpyright = {
+            analysis = {
+                typeCheckingMode = "basic", -- or "standard"/"strict"
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+            },
+        },
+    },
+}
+
+vim.lsp.config['ruff'] = {
+    cmd = { 'ruff', 'server' },
+    filetypes = { 'python' },
+    root_markers = {
+        'pyproject.toml',
+        'ruff.toml',
+        '.git',
+    },
+    capabilities = caps,
+}
+vim.lsp.config['texlab'] = {
+    cmd = { 'texlab' },
+    filetypes = { 'tex', 'plaintex', 'bib' },
+    root_markers = {
+        '.latexmkrc',
+        'texlabroot',
+        '.git',
+    },
+    capabilities = caps,
+    settings = {
+        texlab = {
+            build = {
+                executable = "latexmk",
+                args = {
+                    "-pdf",
+                    "-interaction=nonstopmode",
+                    "-synctex=1",
+                    "%f",
+                },
+                onSave = true,
+            },
+
+            forwardSearch = {
+                executable = "zathura",
+                args = {
+                    "--synctex-forward",
+                    "%l:1:%f",
+                    "%p",
+                },
+            },
+
+            chktex = {
+                onOpenAndSave = true,
+                onEdit = false,
+            },
+        },
+    },
+}
 vim.filetype.add({
     extension = {
         h = 'c',
-        c3 = 'c3',
+        c3 = 'c3',      
         d = 'd',
         templ = 'templ',
     },

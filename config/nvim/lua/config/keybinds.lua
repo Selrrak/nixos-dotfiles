@@ -29,6 +29,11 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
+--latex keybinds
+vim.keymap.set("n", "<leader>lt", function()
+    vim.cmd.write()
+    vim.cmd("!latexmk -pdf %")
+end, { desc = "Compile LaTeX" })
 
 -- lint / format php files for LC
 vim.keymap.set("n", "<leader>cc", "<cmd>!php-cs-fixer fix % --using-cache=no<cr>")

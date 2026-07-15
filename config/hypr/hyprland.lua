@@ -44,7 +44,7 @@ local fileManager = "kitty --title 'FB' -e ranger"
 local menu = "wmenu-run"
 local browser = "firefox"
 local taskBar = "waybar" 
---local musicPlayer = "flatpak run com.github.th_ch.youtube_music"
+local musicPlayer = "appimage-run /home/selrak/.local/bin/YouTube-Music-3.12.0.AppImage"
 -------------------
 ---- AUTOSTART ----
 -------------class-
@@ -311,7 +311,7 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("kitty --title 'USAGE' -e btop"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("virt-manager"))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("kitty --title 'SOUND' -e wiremix"))
---hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd(musicPlayer, { workspace = "4" }))
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd(musicPlayer))
 hl.bind(mainMod .. " + T", hl.dsp.layout("swapwithmaster"))
 
 hl.bind(mainMod .. " + N", hl.dsp.window.float({ action = "toggle" }))
@@ -549,7 +549,7 @@ hl.window_rule({
 	match = {
 		class = "com.github.th-ch.youtube-music",
 	},
-	workspace = funWS,
+	workspace = browserWS,
 })
 hl.window_rule({
 	name = "reader",

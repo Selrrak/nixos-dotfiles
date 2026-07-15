@@ -36,9 +36,21 @@ main_file="${mains[$lang]}"
 hyprctl dispatch 'hl.dsp.window.move({ workspace = "1" })'
 
 
-kitty --title 'DEV_RANGER' --directory "$root" ~/bin/dev-run ranger >/dev/null 2>&1 &
-kitty --title 'DEV_TMUX' --directory "$root" ~/bin/dev-run tmux new-session -A -s "$project">/dev/null 2>&1 &
+kitty --title 'DEV_RANGER' --directory "$root" ~/.local/bin/dev-run ranger >/dev/null 2>&1 &
+kitty --title 'DEV_TMUX' \
+    --directory "$root" \
+    tmux new-session -A -s "$project" >/dev/null 2>&1 \
+        "bash -lc '
+        if [[ -n \"\${IN_NIX_SHELL:-}\" ]]; then
+            exec bash
+        elif [[ -f flake.nix ]]; then
+            exec nix develop
+        else
+            exec bash
+        fi
+    '" &
 
 cd "$root" || exit 1
 
-exec nvim "$main_file"
+exec ~/.local/bin/dev-run ranger
+#~/.local/bin/dev-run ranger >/dev/null 2>&1 &

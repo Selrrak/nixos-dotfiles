@@ -72,6 +72,8 @@ in
     executable = true;
   };
 	home.packages = with pkgs; [
+    #basedpyright
+    #ruff
     ranger
     bluetui
     calcurse
@@ -96,7 +98,9 @@ in
     wlogout
     tmux
     teams-for-linux
-   #ytmdesktop
+    libreoffice
+    zathura
+   #nsxiv
 	];
 }
 
