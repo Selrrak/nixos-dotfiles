@@ -67,6 +67,10 @@ in
     source = ./scripts/canticle;
     executable = true;
   };
+ home.file.".local/bin/dev-run" = {
+    source = ./scripts/dev-run;
+    executable = true;
+  };
 	home.packages = with pkgs; [
     ranger
     bluetui

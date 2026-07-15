@@ -45,6 +45,11 @@ programs.steam.remotePlay.openFirewall = true;
 programs.steam.gamescopeSession.enable = true;
 programs.steam.localNetworkGameTransfers.openFirewall = true;
 
+programs.bash = {
+  interactiveShellInit = ''
+    PS1='\n\[\033[1;32m\][\u@\h:\w]\$\[\033[0m\] '
+  '';
+};
 services.xserver.videoDrivers = [ "nvidia" ];
 
 hardware.graphics = {

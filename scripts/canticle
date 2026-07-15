@@ -1,28 +1,44 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-lang="$1"
-project="$2"
+set -euo pipefail
+
+lang="${1:?Usage: $0 <language> <project>}"
+project="${2:?Usage: $0 <language> <project>}"
 
 declare -A dirs=(
-	[python]="Python"
-	[cpp]="CPP"
-	)
-	
+    [python]="Python"
+    [cpp]="CPP"
+)
+
 declare -A mains=(
-	[python]="main.py"
-	[cpp]="main.cpp"
-	)
+    [python]="main.py"
+    [cpp]="main.cpp"
+)
 
-if [[ -z "${dirs[$lang]}" ]]; then
-    	echo "Unknown language: $lang"
-    	exit 1
-fi	
+[[ -n "${dirs[$lang]:-}" ]] || {
+    echo "Unknown language: $lang"
+    exit 1
+}
 
-root="$HOME/Documents/${dirs[$lang]}/$project"
-main_file=${mains[$lang]}
+root="$HOME/Projects/${dirs[$lang]}/$project"
+main_file="${mains[$lang]}"
+
+[[ -d "$root" ]] || {
+    echo "Project not found: $root"
+    exit 1
+}
+
+[[ -f "$root/$main_file" ]] || {
+    echo "Missing $main_file"
+    exit 1
+}
 
 hyprctl dispatch 'hl.dsp.window.move({ workspace = "1" })'
-kitty --title "DEV_RANGER" --directory "$root" ranger >/dev/null 2>&1 &
-kitty --title "DEV_TMUX" --directory "$root" tmux new-session -A -s "$project" >/dev/null 2>&1 &
+
+
+kitty --title 'DEV_RANGER' --directory "$root" ~/bin/dev-run ranger >/dev/null 2>&1 &
+kitty --title 'DEV_TMUX' --directory "$root" ~/bin/dev-run tmux new-session -A -s "$project">/dev/null 2>&1 &
+
 cd "$root" || exit 1
-DEV_CANTICLE=1 exec nvim "$main_file"
+
+exec nvim "$main_file"

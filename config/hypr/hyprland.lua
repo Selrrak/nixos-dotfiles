@@ -503,6 +503,7 @@ local fileBrowserWS = "3"
 local documentWS = "4"
 local funWS = "5"
 local bigGaming = "6"
+local wrokChat = "7" 
 local virtualManagerWS = "9"
 local utilityWS = "10"
 hl.window_rule({
@@ -581,9 +582,16 @@ hl.window_rule({
 hl.window_rule({
 	name = "game",
 	match = {
-		class = "^GAME$",
+		class = "^gamescope$",
 	},
 	workspace = bigGaming,
+})
+hl.window_rule({
+	name = "teams",
+	match = {
+		class = "teams-for-linux",
+	},
+	workspace = wrokChat,
 })
 hl.window_rule({
 	name = "bt-utility",
