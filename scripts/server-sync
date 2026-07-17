@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-SERVER="selrak@yshitbox"
+SERVER="selrak@shitbox"
 REMOTE_DIR="/home/selrak/Documents/shared/"
 LOCAL_DIR="$HOME/debianShare/"
 

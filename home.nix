@@ -59,6 +59,10 @@ in
     source = create_symlink "${dotfiles}/wlogout/";
     recursive = true;
  };
+ xdg.configFile."zathura" = {
+    source = create_symlink "${dotfiles}/zathura/";
+    recursive = true;
+ };
   home.file.".local/bin/screenshot" = {
     source = ./scripts/snip.sh;
     executable = true;
@@ -69,6 +73,10 @@ in
   };
  home.file.".local/bin/dev-run" = {
     source = ./scripts/dev-run;
+    executable = true;
+  };
+ home.file.".local/bin/server-sync" = {
+    source = ./scripts/server-sync;
     executable = true;
   };
 	home.packages = with pkgs; [

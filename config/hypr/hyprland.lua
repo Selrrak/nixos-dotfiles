@@ -454,7 +454,7 @@ hl.workspace_rule({
     workspace = "3",
     monitor = "DP-1",
     default = true,
-    layout = "scrolling",
+    layout = "dwindle",
 })
 hl.workspace_rule({
     workspace = "4",
@@ -549,7 +549,7 @@ hl.window_rule({
 	match = {
 		class = "com.github.th-ch.youtube-music",
 	},
-	workspace = browserWS,
+	workspace = utilityWS,
 })
 hl.window_rule({
 	name = "reader",

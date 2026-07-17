@@ -88,6 +88,7 @@ hardware.nvidia = {
   gamescope
   appimage-run
   texliveFull
+  rsync
  ];
 
 programs.mtr.enable = true;
