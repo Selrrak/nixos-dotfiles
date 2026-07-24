@@ -41,7 +41,7 @@ hl.monitor({
 local terminal = "kitty"
 local devTerminal = "kitty --title 'DEV'"
 local fileManager = "kitty --title 'FB' -e ranger"
-local menu = "wmenu-run"
+local menu = "fuzzel"
 local browser = "firefox"
 local taskBar = "waybar" 
 local musicPlayer = "appimage-run /home/selrak/.local/bin/YouTube-Music-3.12.0.AppImage"
@@ -60,6 +60,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("waybar & hyprpaper")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("fcitx5")
+	hl.exec_cmd("mako")
 end)
 
 -------------------------------

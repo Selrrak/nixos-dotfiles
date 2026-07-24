@@ -2,6 +2,16 @@
 let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+  configs = {
+    nvim = "nvim";
+    kitty = "kitty";
+    waybar = "waybar";
+    hyprland = "hypr";
+    ranger = "ranger";
+    tmux = "tmux";
+    wlogout = "wlogout";
+    zathura = "zathura";
+  };
 in
 {
 	home.username = "selrak";
@@ -15,7 +25,9 @@ in
       };
     };
   };
-
+  services.mako = {
+    enable = true;
+  };
 
 	home.stateVersion = "26.05";
 	programs.bash = {
@@ -35,34 +47,12 @@ in
   home.sessionVariables = {
   EDITOR = "nvim";
   };
-  xdg.configFile."nvim" = {
-    source = create_symlink "${dotfiles}/nvim/";
+
+  xdg.configFile = builtins.mapAttrs (name: subpath: {
+    source = create_symlink "${dotfiles}/${subpath}";
     recursive = true;
-  };
-  xdg.configFile."kitty" = {
-    source = create_symlink "${dotfiles}/kitty/";
-    recursive = true;
-  };
-  xdg.configFile."waybar" = {
-    source = create_symlink "${dotfiles}/waybar/";
-    recursive = true;
-  };
- xdg.configFile."hypr" = {
-    source = create_symlink "${dotfiles}/hypr/";
-    recursive = true;
-  };
- xdg.configFile."ranger" = {
-    source = create_symlink "${dotfiles}/ranger/";
-    recursive = true;
- };
- xdg.configFile."wlogout" = {
-    source = create_symlink "${dotfiles}/wlogout/";
-    recursive = true;
- };
- xdg.configFile."zathura" = {
-    source = create_symlink "${dotfiles}/zathura/";
-    recursive = true;
- };
+  }) configs;
+
   home.file.".local/bin/screenshot" = {
     source = ./scripts/snip.sh;
     executable = true;
@@ -80,8 +70,6 @@ in
     executable = true;
   };
 	home.packages = with pkgs; [
-    #basedpyright
-    #ruff
     ranger
     bluetui
     calcurse
@@ -102,13 +90,27 @@ in
     vesktop
     wiremix
     wmenu
+    fuzzel
     wl-clipboard
     wlogout
     tmux
     teams-for-linux
     libreoffice
     zathura
-   #nsxiv
+    imv
 	];
+gtk = {
+  enable = true;
+
+  theme = {
+    name = "everforest-dark";
+    package = pkgs.gnome-themes-extra;
+  };
+
+  iconTheme = {
+    name = "Papirus-Dark";
+    package = pkgs.papirus-icon-theme;
+  };
+};
 }
 

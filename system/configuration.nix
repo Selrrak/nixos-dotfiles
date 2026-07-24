@@ -89,6 +89,7 @@ hardware.nvidia = {
   appimage-run
   texliveFull
   rsync
+  libnotify
  ];
 
 programs.mtr.enable = true;

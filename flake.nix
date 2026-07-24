@@ -12,13 +12,13 @@
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			modules = [
-				./configuration.nix
+				./system/configuration.nix
 				home-manager.nixosModules.home-manager
 				{
 					home-manager = {
 						useGlobalPkgs = true;
 						useUserPackages = true;
-						users.selrak = import ./home.nix;
+						users.selrak = import ./user/home.nix;
 						backupFileExtension = "backup";
 					};
 				}
