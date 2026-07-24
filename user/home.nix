@@ -1,6 +1,8 @@
 {config, pkgs, ... }:
+
+
 let
-  dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
+  dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/user/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
     nvim = "nvim";
@@ -69,6 +71,10 @@ in
     source = ./scripts/server-sync;
     executable = true;
   };
+  imports = [
+    ./modules/nvim.nix
+  ];
+
 	home.packages = with pkgs; [
     ranger
     bluetui
@@ -78,11 +84,6 @@ in
     hyprlock
     nitch
     impala
-		neovim
-		ripgrep
-		nil
-		nixpkgs-fmt
-		nodejs
 		gcc
     swaybg
     grim
