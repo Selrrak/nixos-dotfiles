@@ -1,117 +1,21 @@
-{config, pkgs, ... }:
+{ ... }:
 
-
-let
-  dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/user/config";
-  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
-  configs = {
-    nvim = "nvim";
-    kitty = "kitty";
-    waybar = "waybar";
-    hyprland = "hypr";
-    ranger = "ranger";
-    tmux = "tmux";
-    wlogout = "wlogout";
-    zathura = "zathura";
-  };
-in
 {
 	home.username = "selrak";
+
 	home.homeDirectory = "/home/selrak";
-	programs.git = { 
-    enable = true;
-    settings = {
-      user = {
-      name = "Selrrak";
-      email = "chbou602@ulaval.ca";
-      };
-    };
-  };
-  services.mako = {
-    enable = true;
-  };
 
 	home.stateVersion = "26.05";
-	programs.bash = {
-		enable = true;
-		shellAliases = {
-      f = "nvim .";
-      gti = "git";
-      config = "cd ~/nixos-dotfiles/";
-      freeze = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos";
-      hypr = "start-hyprland";
-		};
-    initExtra = ''
-    export PATH="$HOME/.local/bin:$PATH"
-    nitch
-    '';
-	};
-  home.sessionVariables = {
-  EDITOR = "nvim";
-  };
 
-  xdg.configFile = builtins.mapAttrs (name: subpath: {
-    source = create_symlink "${dotfiles}/${subpath}";
-    recursive = true;
-  }) configs;
-
-  home.file.".local/bin/screenshot" = {
-    source = ./scripts/snip.sh;
-    executable = true;
-  };
- home.file.".local/bin/canticle" = {
-    source = ./scripts/canticle;
-    executable = true;
-  };
- home.file.".local/bin/dev-run" = {
-    source = ./scripts/dev-run;
-    executable = true;
-  };
- home.file.".local/bin/server-sync" = {
-    source = ./scripts/server-sync;
-    executable = true;
-  };
   imports = [
-    ./modules/nvim.nix
+    ./modules/dots.nix
+    ./modules/packages.nix
+    ./modules/neovim.nix
+    ./modules/shells.nix
+    ./modules/theming.nix
+    ./modules/git.nix
+    ./modules/notifications.nix
   ];
 
-	home.packages = with pkgs; [
-    ranger
-    bluetui
-    calcurse
-    btop
-    hyprpaper
-    hyprlock
-    nitch
-    impala
-		gcc
-    swaybg
-    grim
-    slurp
-    vesktop
-    wiremix
-    wmenu
-    fuzzel
-    wl-clipboard
-    wlogout
-    tmux
-    teams-for-linux
-    libreoffice
-    zathura
-    imv
-	];
-gtk = {
-  enable = true;
-
-  theme = {
-    name = "everforest-dark";
-    package = pkgs.gnome-themes-extra;
-  };
-
-  iconTheme = {
-    name = "Papirus-Dark";
-    package = pkgs.papirus-icon-theme;
-  };
-};
 }
 
