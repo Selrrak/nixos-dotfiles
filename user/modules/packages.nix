@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    atool
+    unzip
     hyprpolkitagent
     gamescope
     appimage-run

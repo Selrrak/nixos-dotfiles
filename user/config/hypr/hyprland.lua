@@ -15,22 +15,22 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-	output = "DP-1",
-	mode = "3840x1600@144",
-	position = "0x0",
-	scale = "1.0",
+    output = "DP-1",
+    mode = "3840x1600@144",
+    position = "0x0",
+    scale = "1.0",
 })
 hl.monitor({
-	output = "DP-2",
-	mode = "3440x1440@143.97",
-	position = "auto-up",
-	scale = "1.0",
+    output = "DP-2",
+    mode = "3440x1440@143.97",
+    position = "auto-up",
+    scale = "1.0",
 })
 hl.monitor({
-	output = "DP-3",
-	mode = "1920x1080@165",
-	position = "3840x0",
-	scale = "1.0",
+    output = "DP-3",
+    mode = "1920x1080@165",
+    position = "3840x0",
+    scale = "1.0",
     transform = 1,
 })
 ---------------------
@@ -43,7 +43,7 @@ local devTerminal = "kitty --title 'DEV'"
 local fileManager = "kitty --title 'FB' -e ranger"
 local menu = "fuzzel"
 local browser = "firefox"
-local taskBar = "waybar" 
+local taskBar = "waybar"
 local musicPlayer = "appimage-run /home/selrak/.local/bin/YouTube-Music-3.12.0.AppImage"
 -------------------
 ---- AUTOSTART ----
@@ -55,12 +55,12 @@ local musicPlayer = "appimage-run /home/selrak/.local/bin/YouTube-Music-3.12.0.A
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-	hl.exec_cmd(terminal)
-	hl.exec_cmd("systemctl --user start hyprpolkitagent")
-	hl.exec_cmd("waybar & hyprpaper")
-	hl.exec_cmd("hypridle")
-	hl.exec_cmd("fcitx5")
-	hl.exec_cmd("mako")
+    hl.exec_cmd(terminal)
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.exec_cmd("waybar & hyprpaper")
+    hl.exec_cmd("hypridle")
+    hl.exec_cmd("fcitx5")
+    hl.exec_cmd("mako")
 end)
 
 -------------------------------
@@ -108,63 +108,63 @@ hl.env("INPUT_METHOD", "fcitx")
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
-	general = {
-		gaps_in = 2,
-		gaps_out = 1,
+    general = {
+        gaps_in = 2,
+        gaps_out = 1,
 
-		border_size = 2,
+        border_size = 2,
 
-		col = {
-			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-			inactive_border = "rgba(595959aa)",
-		},
+        col = {
+            active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
+            inactive_border = "rgba(595959aa)",
+        },
 
-		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
-		resize_on_border = false,
+        -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
+        resize_on_border = false,
 
-		-- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
-		allow_tearing = false,
+        -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
+        allow_tearing = false,
 
-		layout = "dwindle",
-	},
+        layout = "dwindle",
+    },
 
-	decoration = {
-		rounding = 10,
-		rounding_power = 2,
+    decoration = {
+        rounding = 10,
+        rounding_power = 2,
 
-		-- Change transparency of focused and unfocused windows
-		active_opacity = 1.0,
-		inactive_opacity = 1.0,
+        -- Change transparency of focused and unfocused windows
+        active_opacity = 1.0,
+        inactive_opacity = 1.0,
 
-		shadow = {
-			enabled = true,
-			range = 4,
-			render_power = 3,
-			color = 0xee1a1a1a,
-		},
+        shadow = {
+            enabled = true,
+            range = 4,
+            render_power = 3,
+            color = 0xee1a1a1a,
+        },
 
-		blur = {
-			enabled = true,
-			size = 3,
-			passes = 1,
-			vibrancy = 0.1696,
-		},
-	},
+        blur = {
+            enabled = true,
+            size = 3,
+            passes = 1,
+            vibrancy = 0.1696,
+        },
+    },
 
-	animations = {
-		enabled = true,
-	},
+    animations = {
+        enabled = true,
+    },
 })
 hl.config({
-	general = {
-		col = {
-			active_border = "rgba(44464f77)",
-			inactive_border = "rgba(1a1b2033)",
-		},
-	},
-	misc = {
-		background_color = "rgba(121318FF)",
-	},
+    general = {
+        col = {
+            active_border = "rgba(44464f77)",
+            inactive_border = "rgba(1a1b2033)",
+        },
+    },
+    misc = {
+        background_color = "rgba(121318FF)",
+    },
 })
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
@@ -202,37 +202,37 @@ hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
 hl.workspace_rule({ workspace = "f[1]", gaps_out = 0, gaps_in = 0 })
 hl.workspace_rule({ workspace = "8", layout = "monocle" })
 hl.window_rule({
-	name = "no-gaps-wtv1",
-	match = { float = false, workspace = "w[tv1]" },
-	border_size = 0,
-	rounding = 0,
+    name = "no-gaps-wtv1",
+    match = { float = false, workspace = "w[tv1]" },
+    border_size = 0,
+    rounding = 0,
 })
 hl.window_rule({
-	name = "no-gaps-f1",
-	match = { float = false, workspace = "f[1]" },
-	border_size = 0,
-	rounding = 0,
+    name = "no-gaps-f1",
+    match = { float = false, workspace = "f[1]" },
+    border_size = 0,
+    rounding = 0,
 })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
-	dwindle = {
-		preserve_split = true, -- You probably want this
-	},
+    dwindle = {
+        preserve_split = true, -- You probably want this
+    },
 })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
 hl.config({
-	master = {
-		new_status = "slave",
-	},
+    master = {
+        new_status = "slave",
+    },
 })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
 hl.config({
-	scrolling = {
-		fullscreen_on_one_column = true,
-	},
+    scrolling = {
+        fullscreen_on_one_column = true,
+    },
 })
 
 ----------------
@@ -245,11 +245,11 @@ hl.config({
 })
 
 hl.config({
-	misc = {
-		force_default_wallpaper = -1, 		
-        disable_hyprland_logo = true, 
-		disable_splash_rendering = true,
-	},
+    misc = {
+        force_default_wallpaper = -1,
+        disable_hyprland_logo = true,
+        disable_splash_rendering = true,
+    },
 })
 
 ---------------
@@ -257,34 +257,34 @@ hl.config({
 ---------------
 
 hl.config({
-	input = {
-		kb_layout = "us",
-		kb_variant = "intl",
-		kb_model = "",
-		kb_options = "",
-		kb_rules = "",
+    input = {
+        kb_layout = "us",
+        kb_variant = "intl",
+        kb_model = "",
+        kb_options = "",
+        kb_rules = "",
 
-		follow_mouse = 1,
+        follow_mouse = 1,
 
-		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
-		touchpad = {
-			natural_scroll = false,
-		},
-	},
+        touchpad = {
+            natural_scroll = false,
+        },
+    },
 })
 
 hl.gesture({
-	fingers = 3,
-	direction = "horizontal",
-	action = "workspace",
+    fingers = 3,
+    direction = "horizontal",
+    action = "workspace",
 })
 
 -- Example per-device config
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
 hl.device({
-	name = "epic-mouse-v1",
-	sensitivity = -0.5,
+    name = "epic-mouse-v1",
+    sensitivity = -0.5,
 })
 
 ---------------------
@@ -330,15 +330,15 @@ hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 -- Screenshots
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("screenshot"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("snip.sh"))
 --hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("hyprshot -m window"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
-	local key = i % 10 -- 10 maps to key 0
-	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 -- Example special workspace (scratchpad)
@@ -355,24 +355,24 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-	{ locked = true, repeating = true }
+    "XF86AudioRaiseVolume",
+    hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+    { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
-	{ locked = true, repeating = true }
+    "XF86AudioLowerVolume",
+    hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+    { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
-	{ locked = true, repeating = true }
+    "XF86AudioMute",
+    hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+    { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
-	{ locked = true, repeating = true }
+    "XF86AudioMicMute",
+    hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+    { locked = true, repeating = true }
 )
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
@@ -393,35 +393,35 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 -- Example window rules that are useful
 
 local suppressMaximizeRule = hl.window_rule({
-	-- Ignore maximize requests from all apps. You'll probably like this.
-	name = "suppress-maximize-events",
-	match = { class = ".*" },
+    -- Ignore maximize requests from all apps. You'll probably like this.
+    name = "suppress-maximize-events",
+    match = { class = ".*" },
 
-	suppress_event = "maximize",
+    suppress_event = "maximize",
 })
 -- suppressMaximizeRule:set_enabled(false)
 
 hl.window_rule({
-	-- Fix some dragging issues with XWayland
-	name = "fix-xwayland-drags",
-	match = {
-		class = "^$",
-		title = "^$",
-		xwayland = true,
-		float = true,
-		fullscreen = false,
-		pin = false,
-	},
+    -- Fix some dragging issues with XWayland
+    name = "fix-xwayland-drags",
+    match = {
+        class = "^$",
+        title = "^$",
+        xwayland = true,
+        float = true,
+        fullscreen = false,
+        pin = false,
+    },
 
-	no_focus = true,
+    no_focus = true,
 })
 hl.window_rule({
-	-- Fix some dragging issues with XWayland
-	name = "terminal opacity",
-	match = {
-		class = "kitty",
-	},
-	opacity = "1.0 override 0.5 override 0.8 override",
+    -- Fix some dragging issues with XWayland
+    name = "terminal opacity",
+    match = {
+        class = "kitty",
+    },
+    opacity = "1.0 override 0.5 override 0.8 override",
 })
 
 -- Layer rules also return a handle.
@@ -434,11 +434,11 @@ hl.window_rule({
 
 -- Hyprland-run windowrule
 hl.window_rule({
-	name = "move-hyprland-run",
-	match = { class = "hyprland-run" },
+    name = "move-hyprland-run",
+    match = { class = "hyprland-run" },
 
-	move = "20 monitor_h-120",
-	float = true,
+    move = "20 monitor_h-120",
+    float = true,
 })
 hl.workspace_rule({
     workspace = "1",
@@ -504,138 +504,137 @@ local fileBrowserWS = "3"
 local documentWS = "4"
 local funWS = "5"
 local bigGaming = "6"
-local wrokChat = "7" 
+local wrokChat = "7"
 local virtualManagerWS = "9"
 local utilityWS = "10"
 hl.window_rule({
-	name = "browser",
-	match = {
-		class = "firefox",
-	},
-	workspace = browserWS,
+    name = "browser",
+    match = {
+        class = "firefox",
+    },
+    workspace = browserWS,
 })
 
 hl.window_rule({
-	name = "work-terminal",
-	match = {
-		title = "^DEV$",
-	},
-	workspace = terminalWS,
+    name = "work-terminal",
+    match = {
+        title = "^DEV$",
+    },
+    workspace = terminalWS,
 })
 hl.window_rule({
-	name = "canticle-ranger",
-	match = {
-		title = "^DEV_RANGER$",
-	},
-	workspace = terminalWS,
+    name = "canticle-ranger",
+    match = {
+        title = "^DEV_RANGER$",
+    },
+    workspace = terminalWS,
 })
 
 hl.window_rule({
-	name = "canticle-tmux",
-	match = {
-		title = "^DEV_TMUX$",
-	},
-	workspace = terminalWS,
+    name = "canticle-tmux",
+    match = {
+        title = "^DEV_TMUX$",
+    },
+    workspace = terminalWS,
 })
 hl.window_rule({
-	name = "file-browser",
-	match = {
-		title = "^FB$",
-	},
-	workspace = fileBrowserWS,
+    name = "file-browser",
+    match = {
+        title = "^FB$",
+    },
+    workspace = fileBrowserWS,
 })
 
 hl.window_rule({
-	name = "youtube-music",
-	match = {
-		class = "com.github.th-ch.youtube-music",
-	},
-	workspace = utilityWS,
+    name = "youtube-music",
+    match = {
+        class = "com.github.th-ch.youtube-music",
+    },
+    workspace = utilityWS,
 })
 hl.window_rule({
-	name = "reader",
-	match = {
-		class = "org.pwmt.zathura",
-	},
-	workspace = documentWS,
+    name = "reader",
+    match = {
+        class = "org.pwmt.zathura",
+    },
+    workspace = documentWS,
 })
 hl.window_rule({
-	name = "image viewer",
-	match = {
-		class = "Nsxiv",
-	},
-	workspace = documentWS,
+    name = "image viewer",
+    match = {
+        class = "Nsxiv",
+    },
+    workspace = documentWS,
 })
 hl.window_rule({
-	name = "discord",
-	match = {
-		class = "vesktop",
-	},
-	workspace = funWS,
+    name = "discord",
+    match = {
+        class = "vesktop",
+    },
+    workspace = funWS,
 })
 hl.window_rule({
-	name = "steam",
-	match = {
-		class = "steam",
-	},
-	workspace = funWS,
+    name = "steam",
+    match = {
+        class = "steam",
+    },
+    workspace = funWS,
 })
 hl.window_rule({
-	name = "game",
-	match = {
-		class = "^gamescope$",
-	},
-	workspace = bigGaming,
+    name = "game",
+    match = {
+        class = "^gamescope$",
+    },
+    workspace = bigGaming,
 })
 hl.window_rule({
-	name = "teams",
-	match = {
-		class = "teams-for-linux",
-	},
-	workspace = wrokChat,
+    name = "teams",
+    match = {
+        class = "teams-for-linux",
+    },
+    workspace = wrokChat,
 })
 hl.window_rule({
-	name = "bt-utility",
-	match = {
-		title = "^BT_UTILITY$",
-	},
-	workspace = utilityWS,
+    name = "bt-utility",
+    match = {
+        title = "^BT_UTILITY$",
+    },
+    workspace = utilityWS,
 })
 
 hl.window_rule({
-	name = "calender-utility",
-	match = {
-		title = "^CALENDER$",
-	},
-	workspace = utilityWS,
+    name = "calender-utility",
+    match = {
+        title = "^CALENDER$",
+    },
+    workspace = utilityWS,
 })
 
 hl.window_rule({
-	name = "network-utility",
-	match = {
-		title = "^WIFI$",
-	},
-	workspace = utilityWS,
+    name = "network-utility",
+    match = {
+        title = "^WIFI$",
+    },
+    workspace = utilityWS,
 })
 hl.window_rule({
-	name = "system-utility",
-	match = {
-		title = "^USAGE$",
-	},
-	workspace = utilityWS,
+    name = "system-utility",
+    match = {
+        title = "^USAGE$",
+    },
+    workspace = utilityWS,
 })
 hl.window_rule({
-	name = "sound-utility",
-	match = {
-		title = "^SOUND$",
-	},
-	workspace = utilityWS,
+    name = "sound-utility",
+    match = {
+        title = "^SOUND$",
+    },
+    workspace = utilityWS,
 })
 hl.window_rule({
-	name = "virtual1",
-	match = {
-		class = ".virt-manager-wrapped",
-	},
-	workspace = virtualManagerWS,
+    name = "virtual1",
+    match = {
+        class = ".virt-manager-wrapped",
+    },
+    workspace = virtualManagerWS,
 })
-

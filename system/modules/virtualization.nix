@@ -6,7 +6,6 @@
     qemu = {
       package = pkgs.qemu;
       swtpm.enable = true;
-      runAsRoot = true;
       vhostUserPackages = [
         pkgs.virtiofsd
       ];

@@ -3,10 +3,11 @@
 {
 imports =
     [ 
+    #hardware specific modules
     ./hardware-configuration.nix
     ./desktop_hardware.nix
     ./storage.nix
-
+    #general system modules
     ../../system/modules/virtualization.nix
     ../../system/modules/boot.nix
     ../../system/modules/networking.nix
@@ -15,12 +16,11 @@ imports =
     ../../system/modules/gaming.nix
     ../../system/modules/audio.nix
     ];
+
+zramSwap.enable = true;
 nixpkgs.config.allowUnfree = true;
 
-
-
 time.timeZone = "America/Montreal";
-
 
 programs.firefox.enable = true;
 
@@ -37,17 +37,11 @@ programs.mtr.enable = true;
      enableSSHSupport = true;
    };
 
-
-
 fonts.packages = with pkgs; [
 	nerd-fonts.jetbrains-mono
 ];
 
-
-
 services.dbus.enable = true;
-
-
 
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

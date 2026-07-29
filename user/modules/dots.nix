@@ -7,7 +7,7 @@ let
     nvim = "nvim";
     kitty = "kitty";
     waybar = "waybar";
-    hyprland = "hypr";
+    hypr = "hypr";
     ranger = "ranger";
     tmux = "tmux";
     wlogout = "wlogout";
