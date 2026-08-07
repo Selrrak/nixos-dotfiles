@@ -331,8 +331,29 @@ hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 -- Screenshots
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("snip.sh"))
---hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("hyprshot -m window"))
+hl.bind("ALT + Z", hl.dsp.submap("chat"))
+hl.define_submap("chat", function()
+    hl.bind(mainMod .. " + left", hl.dsp.layout("cycleprev"))
+    hl.bind(mainMod .. " + right", hl.dsp.layout("cyclenext"))
+    hl.bind("escape", hl.dsp.submap("reset"))
+    hl.bind("ALT + Z", hl.dsp.submap("reset"))
+end)
+hl.bind("ALT + R", hl.dsp.submap("resize"))
 
+-- Start a submap called "resize".
+hl.define_submap("resize", function()
+    -- Set repeating binds for resizing the active window.
+    hl.bind(mainMod .. " + right", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + left", hl.dsp.window.resize({ x = -20, y = 0, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + up", hl.dsp.window.resize({ x = 0, y = 20, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + down", hl.dsp.window.resize({ x = 0, y = -20, relative = true }), { repeating = true })
+
+    -- Use `reset` to go back to the global submap
+    hl.bind("escape", hl.dsp.submap("reset"))
+    hl.bind("ALT + R", hl.dsp.submap("reset"))
+end)
+
+-- Keybinds further down will be global again...
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
@@ -467,7 +488,7 @@ hl.workspace_rule({
     workspace = "5",
     monitor = "DP-3",
     default = true,
-    layout = "scrolling",
+    layout = "monocle",
 })
 hl.workspace_rule({
     workspace = "6",
@@ -502,9 +523,8 @@ local browserWS = "2"
 local terminalWS = "1"
 local fileBrowserWS = "3"
 local documentWS = "4"
-local funWS = "5"
+local chatWS = "5"
 local bigGaming = "6"
-local wrokChat = "7"
 local virtualManagerWS = "9"
 local utilityWS = "10"
 hl.window_rule({
@@ -562,7 +582,7 @@ hl.window_rule({
 hl.window_rule({
     name = "image viewer",
     match = {
-        class = "Nsxiv",
+        class = "imv",
     },
     workspace = documentWS,
 })
@@ -571,14 +591,14 @@ hl.window_rule({
     match = {
         class = "vesktop",
     },
-    workspace = funWS,
+    workspace = chatWS,
 })
 hl.window_rule({
     name = "steam",
     match = {
         class = "steam",
     },
-    workspace = funWS,
+    workspace = chatWS,
 })
 hl.window_rule({
     name = "game",
@@ -592,7 +612,7 @@ hl.window_rule({
     match = {
         class = "teams-for-linux",
     },
-    workspace = wrokChat,
+    workspace = chatWS,
 })
 hl.window_rule({
     name = "bt-utility",
