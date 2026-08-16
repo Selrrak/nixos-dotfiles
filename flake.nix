@@ -6,13 +6,15 @@
 			url = "github:nix-community/home-manager/release-26.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};		
+    claude-code.url = "github:sadjow/claude-code-nix";
 	};
 
-	outputs = { self, nixpkgs, home-manager, ... }: {
+	outputs = { self, nixpkgs, home-manager, claude-code, ... }: {
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			modules = [
 				./hosts/desktop/configuration.nix
+        { nixpkgs.overlays = [ claude-code.overlays.default ]; }
 				home-manager.nixosModules.home-manager
 				{
 					home-manager = {
