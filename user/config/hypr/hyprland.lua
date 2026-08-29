@@ -331,16 +331,21 @@ hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 -- Screenshots
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("snip.sh"))
+
+hl.bind("ALT + Z", hl.dsp.exec_cmd("notify-send -t 2000 'Chat mode'"))
 hl.bind("ALT + Z", hl.dsp.submap("chat"))
 hl.define_submap("chat", function()
     hl.bind(mainMod .. " + left", hl.dsp.layout("cycleprev"))
     hl.bind(mainMod .. " + right", hl.dsp.layout("cyclenext"))
     hl.bind("escape", hl.dsp.submap("reset"))
     hl.bind("ALT + Z", hl.dsp.submap("reset"))
+    hl.bind("ALT + Z", hl.dsp.exec_cmd("notify-send -t 2000 'Normal mode'"))
+    hl.bind("escape", hl.dsp.exec_cmd("notify-send -t 2000 'Normal mode'"))
 end)
 hl.bind("ALT + R", hl.dsp.submap("resize"))
 
 -- Start a submap called "resize".
+hl.bind("ALT + R", hl.dsp.exec_cmd("notify-send -t 2000 'Resize mode'"))
 hl.define_submap("resize", function()
     -- Set repeating binds for resizing the active window.
     hl.bind(mainMod .. " + right", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
@@ -351,6 +356,8 @@ hl.define_submap("resize", function()
     -- Use `reset` to go back to the global submap
     hl.bind("escape", hl.dsp.submap("reset"))
     hl.bind("ALT + R", hl.dsp.submap("reset"))
+    hl.bind("ALT + R", hl.dsp.exec_cmd("notify-send -t 2000 'Normal mode'"))
+    hl.bind("escape", hl.dsp.exec_cmd("notify-send -t 2000 'Normal mode'"))
 end)
 
 -- Keybinds further down will be global again...

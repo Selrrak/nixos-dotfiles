@@ -15,6 +15,7 @@
     ./modules/theming.nix
     ./modules/git.nix
     ./modules/notifications.nix
+    ./modules/idling.nix
     #./modules/llm.nix
   ];
 
