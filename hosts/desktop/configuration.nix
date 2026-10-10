@@ -29,6 +29,7 @@ programs.firefox.enable = true;
   wget
   git
  rsync
+ ddcutil
  ];
 
 programs.mtr.enable = true;

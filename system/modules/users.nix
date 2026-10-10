@@ -9,6 +9,7 @@
       "wheel"
       "video"
       "render"
+      "i2c"
     ];
 
     packages = with pkgs; [

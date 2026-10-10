@@ -12,7 +12,7 @@ in
       gti = "git";
       config = "cd ~/nixos-dotfiles/";
       freeze = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos";
-      hypr = "start-hyprland";
+      hypr = "uwsm start hyprland-uwsm.desktop";
     };
 
 
